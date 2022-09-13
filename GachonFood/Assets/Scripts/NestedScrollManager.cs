@@ -9,11 +9,12 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
     public BtnManager btnManager;
     public Scrollbar scrollbar;
 
-    const int SIZE = 2;
-    float[] pos = new float[SIZE];
-    float distance, curPos, targetPos;
+    const int SIZE = 3;
+    public float[] pos = new float[SIZE];
+    float distance, curPos;
+    public float targetPos;
     bool isDrag;
-    int targetIndex;
+    public int targetIndex;
 
     private void Start()
     {
@@ -25,14 +26,23 @@ public class NestedScrollManager : MonoBehaviour, IBeginDragHandler, IDragHandle
     {
         if(!isDrag)
         {
-            scrollbar.value = Mathf.Lerp(scrollbar.value, targetPos, 0.1f);
+            scrollbar.value = Mathf.Lerp(scrollbar.value, targetPos, 0.3f);
 
-            for(int i = 0; i < btnManager.optionBtn.Length; i++)
-                btnManager.optionBtn[i].color = new Color32(255, 255, 255, 0);
-            if (targetIndex == 0)
-                btnManager.optionBtn[0].color = new Color32(255, 255, 255, 80);
-            else if(targetIndex == 1)
-                btnManager.optionBtn[1].color = new Color32(255, 255, 255, 80);
+            for(int i = 0; i < btnManager.selectBtn.Length; i++)
+                btnManager.selectBtn[i].color = new Color32(255, 255, 255, 0);
+            switch(targetIndex)
+            {
+                case 0:
+                    btnManager.selectBtn[0].color = new Color32(255, 255, 255, 80);
+                    break;
+                case 1:
+                    btnManager.selectBtn[1].color = new Color32(255, 255, 255, 80);
+                    break;
+                case 2:
+                    btnManager.selectBtn[2].color = new Color32(255, 255, 255, 80);
+                    break;
+            }
+                
         }
     }
 

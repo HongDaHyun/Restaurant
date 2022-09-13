@@ -26,7 +26,7 @@ public class Food : MonoBehaviour
         Set();
     }
 
-    void Set()
+    public void Set()
     {
         for(int i = 0; i < csvReader.list.food.Length; i++)
         {

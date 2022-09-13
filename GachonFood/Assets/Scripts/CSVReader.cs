@@ -13,6 +13,7 @@ public class CSVReader : MonoBehaviour
         public string name;
         public string context;
         public int id;
+        public GameObject marker;
         public Sprite sprite;
     }
 
@@ -22,6 +23,7 @@ public class CSVReader : MonoBehaviour
         public string name;
         public string context;
         public int id;
+        public GameObject marker;
         public Sprite sprite;
     }
 
@@ -31,6 +33,7 @@ public class CSVReader : MonoBehaviour
         public string name;
         public string context;
         public int id;
+        public GameObject marker;
         public Sprite sprite;
     }
 

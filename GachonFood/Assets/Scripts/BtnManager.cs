@@ -2,51 +2,83 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class BtnManager : MonoBehaviour
 {
+    public CSVReader csvReader;
+    public NestedScrollManager nested;
+
     public Image[] selectBtn;
-    public Image[] optionBtn;
     public GameObject[] contents;
+    public GameObject info;
+
+    Animator infoAnim;
+
+    int clickCount = 0;
+
+    private void Awake()
+    {
+        infoAnim = info.GetComponent<Animator>();
+    }
+
+    private void Update()
+    {
+        EscapeBtn();
+    }
 
     public void Select(int id)
     {
         for(int i = 0; i < contents.Length; i++)
         {
-            contents[i].SetActive(false);
             selectBtn[i].color = new Color32(255, 255, 255, 0);
         }
-        switch(id)
+        nested.targetIndex = id;
+        nested.targetPos = nested.pos[id];
+        nested.scrollbar.value = Mathf.Lerp(nested.scrollbar.value, nested.targetPos, 0.3f);
+        contents[id].GetComponentInParent<ScrollScript>().content = contents[id].GetComponent<RectTransform>();
+        selectBtn[id].color = new Color32(255, 255, 255, 80);
+    }
+
+    public void Info()
+    {
+        GameObject clickObj = EventSystem.current.currentSelectedGameObject;
+        Debug.Log(clickObj.name);
+        infoAnim.SetBool("IsShow", true);
+    }
+
+    public void EscapeBtn()
+    {
+        if(Input.GetKeyDown(KeyCode.Escape))
         {
-            case 0:
-                contents[0].SetActive(true);
-                selectBtn[0].color = new Color32(255, 255, 255, 80);
-                break;
-            case 1:
-                contents[1].SetActive(true);
-                selectBtn[1].color = new Color32(255, 255, 255, 80);
-                break;
-            case 2:
-                contents[2].SetActive(true);
-                selectBtn[2].color = new Color32(255, 255, 255, 80);
-                break;
+            if (infoAnim.GetBool("IsShow"))
+            {
+                infoAnim.SetBool("IsShow", false);
+                return;
+            }
+            else
+            {
+                clickCount++;
+                if (!IsInvoking("DoubleClick"))
+                    Invoke("DoubleClick", 1.0f);
+            }
+            Debug.Log(clickCount);
+        }
+        else if(clickCount == 2)
+        {
+            CancelInvoke("DoubleClick");
+            Application.Quit();
         }
     }
 
-    public void Option(int id)
+    void DoubleClick()
     {
-        for(int i = 0; i < optionBtn.Length; i++)
-        {
-            optionBtn[i].color = new Color32(255, 255, 255, 0);
-        }
-        switch(id)
-        {
-            case 0:
-                optionBtn[0].color = new Color32(255, 255, 255, 80);
-                break;
-            case 1:
-                optionBtn[1].color = new Color32(255, 255, 255, 80);
-                break;
-        }
+        clickCount = 0;
+    }
+
+    public void OnlineChat()
+    {
+        SceneManager.LoadScene(1);
     }
 }
