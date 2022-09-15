@@ -1,0 +1,157 @@
+{
+    "food": [
+        {
+            "name": "치미치미",
+            "context": "맛있는데 가격까지 싼 가성비 부리또 맛집!",
+            "menu": {
+                "name": [
+                    "치킨 브리또",
+                    "돼지 브리또"
+                ],
+                "price": [
+                    3500,
+                    4000
+                ]
+            },
+            "id": 0,
+            "sprite": {
+                "instanceID": 25352
+            }
+        },
+        {
+            "name": "신의 한컵",
+            "context": "주문 받는 대로 사장님이 볶아주시는 컵밥집! 꽤 자극 적인 맛이라 아래 단계부터 하나씩 올라가는 걸 추천해요.",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 1,
+            "sprite": {
+                "instanceID": 25354
+            }
+        },
+        {
+            "name": "더맘",
+            "context": "계란후라이도 원하는 만큼 먹을 수 있고 아이스크림도 무료인 가성비 최고의 돈까스 맛집!",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 2,
+            "sprite": {
+                "instanceID": 25356
+            }
+        },
+        {
+            "name": "화리화리",
+            "context": "쭈꾸미랑 제육 파는데 불맛이 매우 강하지만 정말 맛있는 음식점이에요. 매운 맛은 정말 매우니까 조심하세요!",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 3,
+            "sprite": {
+                "instanceID": 25358
+            }
+        },
+        {
+            "name": "디왈리",
+            "context": "현지인 사장님이 운영하시는 인도 음식점! 특히 밀크티 강추!",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 4,
+            "sprite": {
+                "instanceID": 25360
+            }
+        },
+        {
+            "name": "이삭토스트",
+            "context": "그냥 ISSAC",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 5,
+            "sprite": {
+                "instanceID": 25362
+            }
+        }
+    ],
+    "cafe": [
+        {
+            "name": "리플 커피",
+            "context": "맛도 있는데 가격도 착한 커피집. 학교 안에 있어서 가기도 편해요.",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 0,
+            "sprite": {
+                "instanceID": 25364
+            }
+        },
+        {
+            "name": "히브루즈",
+            "context": "빈백에서 편히 쉴 수도 있고 룸도 있어서 팀플이 있다면 꼭 이용해 보세요.",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 1,
+            "sprite": {
+                "instanceID": 25366
+            }
+        },
+        {
+            "name": "카페 1988",
+            "context": "고소하고 신선한 커피와 깔끔한 인테리어가 돋보이는 집!",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 2,
+            "sprite": {
+                "instanceID": 25368
+            }
+        },
+        {
+            "name": "떼루와",
+            "context": "가격이 정말 착한 생과일주스 맛집!",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 3,
+            "sprite": {
+                "instanceID": 25370
+            }
+        },
+        {
+            "name": "올데이커피",
+            "context": "조용하고 편안해서 연인이랑 가서 꽁냥거리기 좋은 카페!",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 4,
+            "sprite": {
+                "instanceID": 25372
+            }
+        },
+        {
+            "name": "오르막커피",
+            "context": "귀여운 고양이들이 살고 있는 고양이 카페로 고양이를 좋아한다면 꼭 가봐야하는 카페에요.",
+            "menu": {
+                "name": [],
+                "price": []
+            },
+            "id": 5,
+            "sprite": {
+                "instanceID": 25374
+            }
+        }
+    ],
+    "exercise": []
+}

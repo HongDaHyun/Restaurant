@@ -5,20 +5,20 @@ using UnityEngine.UI;
 
 public class Food : MonoBehaviour
 {
-    CSVReader csvReader;
-    Image img;
-    Text title;
-    Text context;
+    DataBase db;
+    BtnManager btnManager;
+    public string _name;
+    public string _context;
+    public List<string> _menuName;
+    public List<int> _menuPrice;
+    public Sprite _sprite;
 
     public int id;
 
     private void Awake()
     {
-        csvReader = GameObject.Find("CSVReader").GetComponent<CSVReader>();
-        img = transform.GetChild(0).GetComponent<Image>();
-        Transform txtPanel = transform.GetChild(1);
-        title = txtPanel.GetChild(0).GetComponent<Text>();
-        context = txtPanel.GetChild(1).GetComponent<Text>();
+        db = GameObject.Find("DataBase").GetComponent<DataBase>();
+        btnManager = GameObject.Find("BtnManager").GetComponent<BtnManager>();
     }
 
     private void Start()
@@ -28,14 +28,24 @@ public class Food : MonoBehaviour
 
     public void Set()
     {
-        for(int i = 0; i < csvReader.list.food.Length; i++)
+        for (int i = 0; i < db.list.food.Length; i++)
         {
-            if(id == csvReader.list.food[i].id)
+            if (id == db.list.food[i].id)
             {
-                img.sprite = csvReader.list.food[i].sprite;
-                title.text = csvReader.list.food[i].name;
-                context.text = csvReader.list.food[i].context;
+                _name = db.list.food[i].name;
+                _context = db.list.food[i].context;
+                for(int j = 0; j < db.list.food[i].menu.name.Count; j++)
+                {
+                    _menuName.Add(db.list.food[i].menu.name[j]);
+                    _menuPrice.Add(db.list.food[i].menu.price[j]);
+                }
+                _sprite = db.list.food[i].sprite;
             }
         }
+        transform.GetChild(0).GetComponent<Image>().sprite = _sprite;
+        Transform txtPanel = transform.GetChild(1);
+        txtPanel.GetChild(0).GetComponent<Text>().text = _name;
+        txtPanel.GetChild(1).GetComponent<Text>().text = _context;
+        GetComponent<Button>().onClick.AddListener(btnManager.Info);
     }
 }

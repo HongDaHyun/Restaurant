@@ -217,6 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 142fe68e0587db34a95abd2dc8c88af5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _name: 
+  _context: 
+  _menuName: []
+  _menuPrice: 
+  _sprite: {fileID: 0}
   id: 0
 --- !u!1 &6333334970711360554
 GameObject:

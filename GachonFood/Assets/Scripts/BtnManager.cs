@@ -7,12 +7,19 @@ using UnityEngine.SceneManagement;
 
 public class BtnManager : MonoBehaviour
 {
-    public CSVReader csvReader;
+    public DataBase db;
     public NestedScrollManager nested;
 
     public Image[] selectBtn;
     public GameObject[] contents;
+
     public GameObject info;
+    public Scrollbar infoScroll;
+    public Image infoImg;
+    public Text infoTitle;
+    public Text infoContents;
+    public Text[] menuName;
+    public Text[] menuPrice;
 
     Animator infoAnim;
 
@@ -44,7 +51,43 @@ public class BtnManager : MonoBehaviour
     public void Info()
     {
         GameObject clickObj = EventSystem.current.currentSelectedGameObject;
-        Debug.Log(clickObj.name);
+        Food f = clickObj.GetComponent<Food>();
+        Cafe c = clickObj.GetComponent<Cafe>();
+        Exercise e = clickObj.GetComponent<Exercise>();
+        if(f != null)
+        {
+            infoImg.sprite = f._sprite;
+            infoTitle.text = f._name;
+            infoContents.text = f._context;
+            for(int i = 0; i < f._menuName.Count; i++)
+            {
+                menuName[i].text = f._menuName[i];
+                menuPrice[i].text = f._menuPrice[i].ToString();
+            }
+        }
+        else if(c != null)
+        {
+            infoImg.sprite = c._sprite;
+            infoTitle.text = c._name;
+            infoContents.text = c._context;
+            for (int i = 0; i < c._menuName.Count; i++)
+            {
+                menuName[i].text = c._menuName[i];
+                menuPrice[i].text = c._menuPrice[i].ToString();
+            }
+        }
+        else if(e != null)
+        {
+            //infoImg.sprite = e._sprite;
+            //infoTitle.text = e._name;
+            //infoContents.text = e._context;
+            //for (int i = 0; i < e._menuName.Count; i++)
+            //{
+            //    menuName[i].text = e._menuName[i];
+            //    menuPrice[i].text = e._menuPrice[i].ToString();
+            //}
+        }
+        infoScroll.value = 1;
         infoAnim.SetBool("IsShow", true);
     }
 
