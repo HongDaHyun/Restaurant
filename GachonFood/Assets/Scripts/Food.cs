@@ -9,11 +9,11 @@ public class Food : MonoBehaviour
     BtnManager btnManager;
     public string _name;
     public string _context;
+    public string _url;
+    public List<string> _combination;
     public List<string> _menuName;
     public List<int> _menuPrice;
     public Sprite _sprite;
-
-    public int id;
 
     private void Awake()
     {
@@ -30,15 +30,14 @@ public class Food : MonoBehaviour
     {
         for (int i = 0; i < db.list.food.Length; i++)
         {
-            if (id == db.list.food[i].id)
+            if (name == db.list.food[i].name)
             {
                 _name = db.list.food[i].name;
                 _context = db.list.food[i].context;
-                for(int j = 0; j < db.list.food[i].menu.name.Count; j++)
-                {
-                    _menuName.Add(db.list.food[i].menu.name[j]);
-                    _menuPrice.Add(db.list.food[i].menu.price[j]);
-                }
+                _url = db.list.food[i].url;
+                _combination = db.list.food[i].combination;
+                _menuName = db.list.food[i].menu.name;
+                _menuPrice = db.list.food[i].menu.price;
                 _sprite = db.list.food[i].sprite;
             }
         }

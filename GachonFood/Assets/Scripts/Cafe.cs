@@ -9,6 +9,8 @@ public class Cafe : MonoBehaviour
     BtnManager btnManager;
     public string _name;
     public string _context;
+    public string _url;
+    public List<string> _combination;
     public List<string> _menuName;
     public List<int> _menuPrice;
     public Sprite _sprite;
@@ -30,15 +32,14 @@ public class Cafe : MonoBehaviour
     {
         for (int i = 0; i < db.list.cafe.Length; i++)
         {
-            if (id == db.list.cafe[i].id)
+            if (name == db.list.cafe[i].name)
             {
                 _name = db.list.cafe[i].name;
                 _context = db.list.cafe[i].context;
-                for (int j = 0; j < db.list.cafe[i].menu.name.Count; j++)
-                {
-                    _menuName.Add(db.list.cafe[i].menu.name[j]);
-                    _menuPrice.Add(db.list.cafe[i].menu.price[j]);
-                }
+                _url = db.list.cafe[i].url;
+                _combination = db.list.cafe[i].combination;
+                _menuName = db.list.cafe[i].menu.name;
+                _menuPrice = db.list.cafe[i].menu.price;
                 _sprite = db.list.cafe[i].sprite;
             }
         }
